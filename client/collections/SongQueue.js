@@ -3,13 +3,13 @@ var SongQueue = Songs.extend({
 
   //model: SongModel,
   initialize: function(){
-    console.log(this);
+    console.log(this.at(0));
     this.on('add', this.checkFirst);
     this.on('ended', this.songEnded);
   },
   
   playFirst: function(){
-
+    this.models[0].play();
   },
 
   checkFirst: function(){
@@ -20,6 +20,7 @@ var SongQueue = Songs.extend({
 
   songEnded: function() {
     this.shift();
+
     if (this.length > 0) {
       this.playFirst();      
     }
