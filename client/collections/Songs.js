@@ -3,7 +3,7 @@ var Songs = Backbone.Collection.extend({
 
   model: SongModel,
   initialize: function() {
-    console.log('this is inside Songs collection', this);
+    //console.log('this is inside Songs collection', this);
   }
 
 });
