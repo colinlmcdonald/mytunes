@@ -10,7 +10,7 @@ var SongQueueView = Backbone.View.extend({
     //call SongQueueEntryView.render()
     //extend SongQueueEntryView from SongQueueView
     //change the spec
-    console.log(this);
+    //console.log(this);
     return new SongQueueEntryView().render();
   }
 

@@ -2,10 +2,13 @@
 var SongQueue = Songs.extend({
 
   //model: SongModel,
+
   initialize: function(){
-    console.log(this.at(0));
     this.on('add', this.checkFirst);
     this.on('ended', this.songEnded);
+    this.on('dequeue', this.remove);
+    //this.on('enqueue', this.addToQueue);
+    //console.log('this inside SongQueue', this)
   },
   
   playFirst: function(){
@@ -16,6 +19,13 @@ var SongQueue = Songs.extend({
     if (this.length < 2) {
       this.playFirst();
     }
+  },
+
+  addToQueue: function(){
+    //this adds the next song to the song Queue
+    //the spec seems to say that we're expecting the next song to come from the library
+    console.log('hi');
+    //this.collection.add(this.model);
   },
 
   songEnded: function() {

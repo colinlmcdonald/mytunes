@@ -3,7 +3,11 @@ var Songs = Backbone.Collection.extend({
 
   model: SongModel,
   initialize: function() {
-    //console.log('this is inside Songs collection', this);
+    this.on('enqueue', this.addToQueue);
+  },
+
+  addToQueue: function() {
+    
   }
 
 });
