@@ -48,7 +48,7 @@ describe('PlayerView', function() {
       //console.log('passed the first equal'); //this is passed
       // Simulate the end of the first song
       $(appView.playerView.el).trigger('ended');
-      //console.log(songQueue);
+      console.log("songQueue: ", songQueue);
       expect(appView.playerView.model).to.equal(secondSong);
       console.log('passed the second one'); //this is not passing
       // Simulate the end of the second song

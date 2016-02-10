@@ -5,7 +5,7 @@ var SongQueue = Songs.extend({
 
   initialize: function(){
     this.on('add', this.enqueue, this);
-    this.on('ended', this.songEnded);
+    this.on('ended', this.songEnded, this);
     this.on('dequeue', this.remove);
   },
   
@@ -25,9 +25,8 @@ var SongQueue = Songs.extend({
   },
 
   songEnded: function() {
-
     this.shift();
-    console.log("inside songEnded: ", this);
+    
     // this.models[0].remove();
     // this.model.get('currentSong') = this.models[0];
     if (this.length > 0) {
