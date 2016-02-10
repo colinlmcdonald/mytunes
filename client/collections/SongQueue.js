@@ -4,28 +4,28 @@ var SongQueue = Songs.extend({
   //model: SongModel,
 
   initialize: function(){
-    this.on('add', this.checkFirst);
+    this.on('add', this.enqueue, this);
     this.on('ended', this.songEnded);
     this.on('dequeue', this.remove);
-    //this.on('enqueue', this.addToQueue);
-    //console.log('this inside SongQueue', this)
   },
   
   playFirst: function(){
+    //we need to reference the song in the Songs collection ('library')
     this.models[0].play();
+
   },
 
   checkFirst: function(){
+
+  },
+
+  enqueue: function(song){
+    //if it's the first song, play it
+    //otherwise, put it in the queue
+    //console.log('this in enqueue in SongQueue', this);
     if (this.length < 2) {
       this.playFirst();
     }
-  },
-
-  addToQueue: function(){
-    //this adds the next song to the song Queue
-    //the spec seems to say that we're expecting the next song to come from the library
-    console.log('hi');
-    //this.collection.add(this.model);
   },
 
   songEnded: function() {
