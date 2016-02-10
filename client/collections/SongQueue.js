@@ -5,32 +5,39 @@ var SongQueue = Songs.extend({
 
   initialize: function(){
     this.on('add', this.enqueue, this);
-    this.on('ended', this.songEnded, this);
-    this.on('dequeue', this.remove);
+    this.on('ended', this.playNext, this);
+    this.on('dequeue', this.dequeue, this);
   },
   
   playFirst: function(){
-    //we need to reference the song in the Songs collection ('library')
-    this.models[0].play();
-
+    console.log(this.at(0));
+    this.at(0).play();
   },
 
-  enqueue: function(){
-    //if it's the first song, play it
-    //otherwise, put it in the queue
-    //console.log('this in enqueue in SongQueue', this);
-    if (this.length < 2) {
+  enqueue: function(song){
+    if (this.length === 1) {
       this.playFirst();
+    } else {
+      
     }
   },
 
-  songEnded: function() {
+  dequeue: function(song){
+    if (this.at(0) === song){
+      this.playNext();
+    } else {
+      this.remove(song);
+    }
+  },
+
+  playNext: function() {
     this.shift();
-    
-    // this.models[0].remove();
-    // this.model.get('currentSong') = this.models[0];
-    if (this.length > 0) {
-      this.playFirst();      
+
+    if (this.length >= 1) {
+      console.log(this);
+      this.playFirst();    
+    } else {
+      this.trigger('stop');
     }
   }
 
