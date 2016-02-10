@@ -15,11 +15,7 @@ var SongQueue = Songs.extend({
 
   },
 
-  checkFirst: function(){
-
-  },
-
-  enqueue: function(song){
+  enqueue: function(){
     //if it's the first song, play it
     //otherwise, put it in the queue
     //console.log('this in enqueue in SongQueue', this);
@@ -29,8 +25,11 @@ var SongQueue = Songs.extend({
   },
 
   songEnded: function() {
-    this.shift();
 
+    this.shift();
+    console.log("inside songEnded: ", this);
+    // this.models[0].remove();
+    // this.model.get('currentSong') = this.models[0];
     if (this.length > 0) {
       this.playFirst();      
     }
